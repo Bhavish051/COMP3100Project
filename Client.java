@@ -24,9 +24,8 @@ public class Client {
   public Client(String Ipaddress, int Port, String sorter) throws Exception{
 
       this.socket = new Socket(Ipaddress, Port); // Used to establish the connection
-      this.input = new BufferedReader(new InputStreamReader(System.in));
-      this.out = new DataOutputStream(socket.getOutputStream());
-      this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      this.input = new BufferedReader(new InputStreamReader(System.in)); // DONT THINK WE NEED THIS
+      this.out = new DataOutputStream(socket.getOutputStream()); // DONT THINK WE NEED THIS
       DIS = new DataInputStream(socket.getInputStream());
       DOUT = new DataOutputStream(socket.getOutputStream());
 
