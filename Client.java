@@ -55,6 +55,7 @@ public class Client {
 			connected = false;
 		} else if (msg.contains("JOBN ")){
 			
+<<<<<<< HEAD
 
 
 
@@ -75,6 +76,10 @@ public class Client {
 			}
 			
 			// the code above works up until JOB #6, as it sends us JCPL rather than JOBN
+=======
+			/* 	TODO
+			*/
+>>>>>>> 27fff92d223a32fb5019c164d9c200e6d55e58b3
 		}
 		while (connected){
 			try {
