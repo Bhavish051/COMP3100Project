@@ -57,24 +57,6 @@ public class Client {
 			
 			/* 	TODO
 			*/
-
-			int jobNo = 0;
-			while (!msg.contains("NONE")){
-				if (msg.contains("JCPL")){
-					sendMessage("REDY");
-					msg = readMessage();
-				} else {
-					sendMessage("SCHD " + jobNo + " " + t.get(largest).getType() + " " + (t.get(largest).getLimit()-1));
-					msg = readMessage();
-
-					sendMessage("REDY");
-					msg = readMessage();
-
-					jobNo ++;
-				}	
-			}
-			
-			// the code above works up until JOB #6, as it sends us JCPL rather than JOBN
 		}
 		while (connected){
 			try {
