@@ -55,8 +55,8 @@ public class Client {
 			connected = false;
 		} else if (msg.contains("JOBN ")){
 			
-			/* 	TODO
-			*/
+
+
 
 			int jobNo = 0;
 			while (!msg.contains("NONE")){
@@ -148,6 +148,7 @@ public class Client {
 				try {
 					TimeUnit.SECONDS.sleep((long) secondsToWait);
 				} catch (InterruptedException ie) {
+          ie.printStackTrace();
 				}
 			}
 		}

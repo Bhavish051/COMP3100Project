@@ -19,7 +19,7 @@ public class Server {
 		}
 
 
-		// TODO:
+
 		// Identification
 		//
 		// id: a sequence number based on the submission time
