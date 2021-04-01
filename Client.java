@@ -95,7 +95,7 @@ public class Client {
 	//Finds the largest server; counts through cores until largest is found then returns largest
 	private int findLargestServer(ArrayList<Server> s){
 		int largest = 0;
-		for (int i = 0; i < t.size(); i++){
+		for (int i = 0; i < s.size(); i++){
 			if (t.get(i).getCores() > largest){
 				largest = i;
 			}
