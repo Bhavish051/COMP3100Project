@@ -29,20 +29,12 @@ public class Client {
 
 		sendMessage("AUTH user");
 		readMessage();
-
+		//Reads ds-system and populates it into array Server 't'
 		ArrayList<Server> t = new ArrayList<Server>();
 		t = readXML("ds-system.xml");
-
-		int largest = 0;
 		
-		for (int i = 0; i < t.size(); i++){
-			if (t.get(i).getCores() > largest){
-				largest = i;
-			}
-		}
-
-		// Prints largest server 
-		System.out.println("[Largest server: " + t.get(largest).getType() + " " + t.get(largest).getCores()+"]");
+		//Finds index of largest server; most cores
+		int largestServer = findLargestServer(t);
 		
 		connected = true;
 
@@ -53,34 +45,24 @@ public class Client {
 		if (msg.contains("NONE")) { 
 			sendMessage("QUIT");
 			connected = false;
-		} else if (msg.contains("JOBN ")){
-			
-<<<<<<< HEAD
-
-
-
-			int jobNo = 0;
-			while (!msg.contains("NONE")){
-				if (msg.contains("JCPL")){
-					sendMessage("REDY");
-					msg = readMessage();
-				} else {
-					sendMessage("SCHD " + jobNo + " " + t.get(largest).getType() + " " + (t.get(largest).getLimit()-1));
-					msg = readMessage();
-
-					sendMessage("REDY");
-					msg = readMessage();
-
-					jobNo ++;
-				}	
-			}
-			
-			// the code above works up until JOB #6, as it sends us JCPL rather than JOBN
-=======
-			/* 	TODO
-			*/
->>>>>>> 27fff92d223a32fb5019c164d9c200e6d55e58b3
 		}
+		
+		//Job scheduler to largest server (THERE IS A BUG WITH THIS I CAN'T SEEM TO FIGURE IT OUT >>> MAIN METHOD FOR ASSIGNMENT)
+		elseif{msg.contains("JOBN"){
+			while(!msg.contains("NONE")){
+				if(msg.contains("JCPL")){
+					sendMessage("REDY");
+					msg = readMessage();
+				}
+				else{
+					sendMessage(AllToLargest(msg, t.get(largestServer)));
+					msg = readMessage();
+					sendMessage("REDY");
+					msg = readMessage();
+				}
+			}
+		}
+		
 		while (connected){
 			try {
 				outStr = input.readLine();
@@ -98,6 +80,7 @@ public class Client {
 			readMessage();
 		}
 		try {
+			//Closes input, output and socket connection once QUIT message has been received; terminates connection
 			if (readMessage().contains("QUIT")){
 				input.close();
 				out.close();
@@ -108,7 +91,25 @@ public class Client {
 		}
 		System.exit(1);
 	}
-
+	
+	//Finds the largest server; counts through cores until largest is found then returns largest
+	private int findLargestServer(ArrayList<Server> s){
+		int largest = 0;
+		for (int i = 0; i < t.size(); i++){
+			if (t.get(i).getCores() > largest){
+				largest = i;
+			}
+		}
+		return largest;
+	}
+	
+	//Sends all jobs to largest server 
+	private String AllToLargest(String job, Server s){
+		String[] strSplit = job.split("\\s+");
+		return "SCHD " + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1)
+	}
+	
+	//Send message to server
 	private void sendMessage (String outStr) {
 		byte[] byteMsg = outStr.getBytes();
 		try {
@@ -117,10 +118,11 @@ public class Client {
 			e.printStackTrace();
 		}
 
-		// Display outgoing message from client
+		//Display output from client
 		System.out.println("OUT: " + outStr);
 	}
-
+	
+	//Read message from server
 	private String readMessage () {
 		String inStr = "";
 		char[] cbuf = new char[65535];
@@ -131,12 +133,13 @@ public class Client {
 		}
 		inStr = new String(cbuf, 0, cbuf.length);
 
-		// Display incoming message from server
+		//Display input from server
 		System.out.println("INC: " + inStr);
 
 		return inStr;
 	}
-
+	
+	//Establishes connection to initiate handhsake
 	private static void connect(String address, int port) {
 		double secondsToWait = 1;
 		int tryNum = 1;
@@ -168,10 +171,10 @@ public class Client {
         ArrayList<Server> serverList = new ArrayList<Server>();
 		
 		try {
-			// XML file to read
+			//Read XML file
 			File systemXML = new File(fileName);
 
-			// Setup XML document parser
+			//Document parser
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(systemXML);
