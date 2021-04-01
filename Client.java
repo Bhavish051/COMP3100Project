@@ -91,6 +91,12 @@ public class Client {
 		}
 		System.exit(1);
 	}
+		
+	//Sends all jobs to largest server 
+	private String AllToLargest(String job, Server s){
+		String[] strSplit = job.split("\\s+");
+		return "SCHD " + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1);
+	}
 	
 	//Finds the largest server; counts through cores until largest is found then returns largest
 	private int findLargestServer(ArrayList<Server> s){
@@ -101,12 +107,6 @@ public class Client {
 			}
 		}
 		return largest;
-	}
-	
-	//Sends all jobs to largest server 
-	private String AllToLargest(String job, Server s){
-		String[] strSplit = job.split("\\s+");
-		return "SCHD " + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1)
 	}
 	
 	//Send message to server
