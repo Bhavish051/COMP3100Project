@@ -46,9 +46,9 @@ public class Client {
 			sendMessage("QUIT");
 			connected = false;
 		}
-		
 		//Job scheduler to largest server (THERE IS A BUG WITH THIS I CAN'T SEEM TO FIGURE IT OUT >>> MAIN METHOD FOR ASSIGNMENT)
-		elseif{msg.contains("JOBN"){
+		else if(msg.contains("JOBN"))
+		{
 			while(!msg.contains("NONE")){
 				if(msg.contains("JCPL")){
 					sendMessage("REDY");
@@ -62,7 +62,7 @@ public class Client {
 				}
 			}
 		}
-		
+	
 		while (connected){
 			try {
 				outStr = input.readLine();
@@ -102,7 +102,7 @@ public class Client {
 	private int findLargestServer(ArrayList<Server> s){
 		int largest = 0;
 		for (int i = 0; i < s.size(); i++){
-			if (t.get(i).getCores() > largest){
+			if (s.get(i).getCores() > largest){
 				largest = i;
 			}
 		}
