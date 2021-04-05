@@ -46,20 +46,17 @@ public class Client {
 			sendMessage("QUIT");
 			connected = false;
 		}
-		//Job scheduler to largest server (THERE IS A BUG WITH THIS I CAN'T SEEM TO FIGURE IT OUT >>> MAIN METHOD FOR ASSIGNMENT)
-		else if(msg.contains("JOBN"))
-		{
-			while(!msg.contains("NONE")){
-				if(msg.contains("JCPL")){
-					sendMessage("REDY");
-					msg = readMessage();
-				}
-				else{
-					sendMessage(AllToLargest(msg, t.get(largestServer)));
-					msg = readMessage();
-					sendMessage("REDY");
-					msg = readMessage();
-				}
+		//Job scheduler to largest server 
+		while(!msg.contains("NONE")){
+			if(msg.contains("JCPL")){
+				sendMessage("REDY");
+				msg = readMessage();
+			}
+			else{
+				sendMessage(AllToLargest(msg, t.get(largestServer)));
+				msg = readMessage();
+				sendMessage("REDY");
+				msg = readMessage();
 			}
 		}
 	
