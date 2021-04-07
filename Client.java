@@ -1,11 +1,13 @@
 import java.net.*;
+
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+
+import org.w3c.dom.*;
+
 import java.io.*;
 public class Client {
 	// initialize socket and input output streams
@@ -46,6 +48,7 @@ public class Client {
 			sendMessage("QUIT");
 			connected = false;
 		}
+
 		//Job scheduler to largest server 
 		while(!msg.contains("NONE")){
 			if(msg.contains("JCPL")){
@@ -92,7 +95,7 @@ public class Client {
 	//Sends all jobs to largest server 
 	private String AllToLargest(String job, Server s){
 		String[] strSplit = job.split("\\s+");
-		return "SCHD " + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1);
+		return "SCHD "  + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1);
 	}
 	
 	//Finds the largest server; counts through cores until largest is found then returns largest
@@ -122,7 +125,7 @@ public class Client {
 	//Read message from server
 	private String readMessage () {
 		String inStr = "";
-		char[] cbuf = new char[65535];
+		char[] cbuf = new char[Short.MAX_VALUE * 2];
 		try {
 			in.read(cbuf);
 		} catch (IOException e) {
@@ -153,7 +156,7 @@ public class Client {
 				try {
 					TimeUnit.SECONDS.sleep((long) secondsToWait);
 				} catch (InterruptedException ie) {
-          ie.printStackTrace();
+         			ie.printStackTrace();
 				}
 			}
 		}
@@ -179,6 +182,7 @@ public class Client {
 			doc.getDocumentElement().normalize();
 			NodeList servers = doc.getElementsByTagName("server");
 			for (int i = 0; i < servers.getLength(); i++) {
+
 				Element server = (Element) servers.item(i);
 
 				String type = server.getAttribute("type");
