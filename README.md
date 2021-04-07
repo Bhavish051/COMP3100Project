@@ -14,11 +14,16 @@ For this project, the main goal is to develop a client-sever simulator that sche
 # SYSTEM OVERVIEW (PAGE 2)
 //TODO
 
+
 # DESIGN (PAGE 3)
 //TODO
 
 # IMPLEMENTATION (PAGE 4)
 //TODO
+The way this system works is at the begining of the client and server it performs a 3 way handshake to ensure the connection is established and after that does the authentication of the user.
+Once all of this is done the client and server are ready to communicate with each other freely.
+After this the first thing this does is read the System.xml file to gather a list of servers available and all the related information about them like their number of cores, cost, how large it is. The client then stores all the servers with all of their attributes in an ArrayList of type server objects.
+Then the process of scheduling the jobs begins where after the client detects that the server has sent a job rather than a message or anything else it schedules it to the largest server and sends back the name of the server that is utilised.
 
 # REFERENCES (PAGE 5)
 //TODO
