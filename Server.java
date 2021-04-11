@@ -1,6 +1,7 @@
 public class Server {
 
-		String type; 
+		String type;
+		String id; 
 		int limit; 
 		int bootTime;
 		float hourlyRate; 
@@ -8,7 +9,7 @@ public class Server {
 		int memory; 
 		int disk;
 
-		public Server(String type, int limit, int bootTime, float hourlyRate, int coreCount, int memory, int disk){
+		public Server(String type, String id, int limit, int bootTime, float hourlyRate, int coreCount, int memory, int disk){
 			this.type = type;
 			this.limit = limit;
 			this.bootTime = bootTime;
@@ -16,28 +17,22 @@ public class Server {
 			this.coreCount = coreCount;
 			this.memory = memory;
 			this.disk = disk;
+			this.id = id;
 		}
 
-
-
-		// Identification
-		//
-		// id: a sequence number based on the submission time
+		// id: ID of server
 		public String getId() {
-			return "null";
+			return this.id;
 		}
 
-		// type: an identifier of job category based on run time
+		// type: category of job
 		public String getType() {
 			return this.type;
 		}
 
-		//
-		// Timing
-		//
-		// limit: the number of servers of a particular type
+		// limit: limit of servers of unique type
 		public int getLimit() {
-			return this.limit; // the number of servers of a particular type
+			return this.limit; 
 		}
 
 		// bootupTime: the amount of time taken to boot a server of a particular type
@@ -45,34 +40,30 @@ public class Server {
 			return this.bootTime;
 		}
 
-		// hourlyRate: the monetary cost for renting a server of a particular type per
-		// hour
 		public Float getHourlyRate() {
 			return this.hourlyRate;
 		}
 
-		//
-		// Resource requirements
-		//
-		// core: the number of CPU cores
+		// core: CPU cores
 		public int getCores() {
 			return this.coreCount;
 		}
 
-		// memory: the amount of RAM (in MB)
+		// memory: RAM
 		public int getMemory() {
 			return this.memory;
 		}
 
-		// disk: the amount of disk space (in MB)
+		// disk: disk space
 		public int getDisk() {
 			return this.disk;
 		}
 
 
         public void printData(){
-             System.out.println(this.type + " " + this.limit + " " + this.bootTime + " " + this.hourlyRate + " " + this.coreCount + " " + this.memory + " " + this.disk);
+             System.out.println(this.type + "" + this.id + " " + this.limit + " " + this.bootTime + " " + this.hourlyRate + " " + this.coreCount + " " + this.memory + " " + this.disk);
         }
 
 
 }
+
