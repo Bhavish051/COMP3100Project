@@ -5,7 +5,7 @@ Cloud Job Schedular or Cost-Efficient Resource Allocator for Distributed Systems
 
 # GROUPMEMBERS (PAGE 1)
 FIRST NAME, LAST NAME (STUDENT ID)
-Zoheb Eftali ()
+Zoheb Eftali (45983569)
 Bhavish Dhanda (45525005)
 Satyamurthy Bale (45527652)
 # INTRODUCTION (PAGE 2)
