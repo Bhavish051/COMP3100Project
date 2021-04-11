@@ -1,13 +1,11 @@
 import java.net.*;
-
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.*;
-
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import java.io.*;
 public class Client {
 	// initialize socket and input output streams
@@ -29,7 +27,7 @@ public class Client {
 		sendMessage("HELO");
 		readMessage();
 
-		sendMessage("AUTH user");
+		sendMessage("AUTH zoheb");
 		readMessage();
 		//Reads ds-system and populates it into array Server 't'
 		ArrayList<Server> t = new ArrayList<Server>();
@@ -48,21 +46,20 @@ public class Client {
 			sendMessage("QUIT");
 			connected = false;
 		}
-
+		
 		//Job scheduler to largest server 
 		while(!msg.contains("NONE")){
-			if(msg.contains("JCPL")){
+			if (msg.contains("JCPL")){
 				sendMessage("REDY");
 				msg = readMessage();
-			}
-			else{
+			} else {
 				sendMessage(AllToLargest(msg, t.get(largestServer)));
 				msg = readMessage();
 				sendMessage("REDY");
 				msg = readMessage();
 			}
-		}
-	
+	}
+		
 		while (connected){
 			try {
 				outStr = input.readLine();
@@ -91,13 +88,15 @@ public class Client {
 		}
 		System.exit(1);
 	}
-		
+	
+
 	//Sends all jobs to largest server 
 	private String AllToLargest(String job, Server s){
+		int jobID = 0;
 		String[] strSplit = job.split("\\s+");
-		return "SCHD "  + strSplit[2] + "" + s.getType() + "" + (s.getLimit()-1);
+		return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID;
 	}
-	
+
 	//Finds the largest server; counts through cores until largest is found then returns largest
 	private int findLargestServer(ArrayList<Server> s){
 		int largest = 0;
@@ -125,7 +124,7 @@ public class Client {
 	//Read message from server
 	private String readMessage () {
 		String inStr = "";
-		char[] cbuf = new char[Short.MAX_VALUE * 2];
+		char[] cbuf = new char[65535];
 		try {
 			in.read(cbuf);
 		} catch (IOException e) {
@@ -156,7 +155,7 @@ public class Client {
 				try {
 					TimeUnit.SECONDS.sleep((long) secondsToWait);
 				} catch (InterruptedException ie) {
-         			ie.printStackTrace();
+          ie.printStackTrace();
 				}
 			}
 		}
@@ -182,10 +181,10 @@ public class Client {
 			doc.getDocumentElement().normalize();
 			NodeList servers = doc.getElementsByTagName("server");
 			for (int i = 0; i < servers.getLength(); i++) {
-
 				Element server = (Element) servers.item(i);
 
 				String type = server.getAttribute("type");
+				String id = server.getAttribute("id");
 				int limit = Integer.parseInt(server.getAttribute("limit"));
 				int bootupTime = Integer.parseInt(server.getAttribute("bootupTime"));
 				float hourlyRate = Float.parseFloat(server.getAttribute("hourlyRate"));
@@ -193,7 +192,7 @@ public class Client {
 				int memory = Integer.parseInt(server.getAttribute("memory"));
 				int disk = Integer.parseInt(server.getAttribute("disk"));
 				
-				Server s = new Server(type,limit,bootupTime,hourlyRate,coreCount,memory,disk);
+				Server s = new Server(type,id,limit,bootupTime,hourlyRate,coreCount,memory,disk);
 				serverList.add(s);
 			}
 
