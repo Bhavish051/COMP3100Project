@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import java.io.*;
 public class Client {
-	// initialize socket and input output streams
+	// Initialize socket and input output streams
 	private static Socket socket = null;
 	private BufferedReader input = null;
 	private DataOutputStream out = null;
