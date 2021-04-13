@@ -13,10 +13,12 @@ For this project, the main goal is to develop a client-sever simulator that sche
 
 # SYSTEM OVERVIEW (PAGE 2)
 //TODO
+This system aims to at first perform a 3 way handshake to establish the connection followed by reading a system.xml file to get the details of all the servers and in the end reads the particular string received to evaluate on a one by one basis what needs to be done. It parses the first 4 characters of the string to see if it is a job that needs to be scheduled or just a message like QUIT received from the server.
 
 
 # DESIGN (PAGE 3)
 //TODO
+
 
 # IMPLEMENTATION (PAGE 4)
 //TODO
