@@ -102,7 +102,8 @@ public class Client {
 		int largest = 0;
 		for (int i = 0; i < s.size(); i++){
 			if (s.get(i).getCores() > largest){
-				largest = i;
+				if(s.get(i).getCores() != s.get(largest).getCores())
+					largest = i;
 			}
 		}
 		return largest;
