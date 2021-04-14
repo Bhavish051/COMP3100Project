@@ -59,12 +59,7 @@ public class Client {
 				msg = readMessage();
 			}
 	}
-	//This method will terminate the client when all the jobs are scheduled
-		if(msg.contains("NONE"))
-		{
-			sendMessage("QUIT");
-		}
-		
+	
 		while (connected){
 			try {
 				outStr = input.readLine();
