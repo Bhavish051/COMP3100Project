@@ -53,7 +53,7 @@ public class Client {
 				sendMessage("REDY");
 				msg = readMessage();
 			} else {
-				sendMessage(AllToLargest(msg, t.get(largestServer)));
+				sendMessage(AllToLargest(msg, t.get(largestServer), largestServer));
 				msg = readMessage();
 				sendMessage("REDY");
 				msg = readMessage();
@@ -91,10 +91,10 @@ public class Client {
 	
 
 	//Sends all jobs to largest server 
-	private String AllToLargest(String job, Server s){
+	private String AllToLargest(String job, Server s, int largestServer){
 		int jobID = 0;
 		String[] strSplit = job.split("\\s+");
-		return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID;
+		return "SCHD " + strSplit[2] + " " + s.getType() + " " + largestServer;
 	}
 
 	//Finds the largest server; counts through cores until largest is found then returns largest
