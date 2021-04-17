@@ -23,10 +23,10 @@ public class Client {
 	private void start () {
 		boolean connected = false;
 		
-		sendMessage("HELO");
+		sendMessage("HELO\n");
 		readMessage();
 
-		sendMessage("AUTH zoheb");
+		sendMessage("AUTH zoheb\n");
 		readMessage();
 		//Reads ds-system and populates it into array Server 't'
 		ArrayList<Server> t = new ArrayList<Server>();
@@ -37,24 +37,24 @@ public class Client {
 		
 		connected = true;
 
-		sendMessage("REDY");
+		sendMessage("REDY\n");
 
 		String msg = readMessage();
 
 		if (msg.contains("NONE")) { 
-			sendMessage("QUIT");
+			sendMessage("QUIT\n");
 			connected = false;
 		}
 		
 		//Job scheduler to largest server 
 		while(!msg.contains("NONE")){
 			if (msg.contains("JCPL")){
-				sendMessage("REDY");
+				sendMessage("REDY\n");
 				msg = readMessage();
 			} else {
 				sendMessage(AllToLargest(msg, t.get(largestServer)));
 				msg = readMessage();
-				sendMessage("REDY");
+				sendMessage("REDY\n");
 				msg = readMessage();
 			}
 	}
@@ -62,7 +62,7 @@ public class Client {
 		while (connected){
 			if (msg.contains("NONE")){
 				connected = false;
-				sendMessage("QUIT");
+				sendMessage("QUIT\n");
 				break;
 			}
 			readMessage();
@@ -85,7 +85,7 @@ public class Client {
 	private String AllToLargest(String job, Server s){
 		int jobID = 0;
 		String[] strSplit = job.split("\\s+");
-		return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID;
+		return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID + "\n";
 	}
 
 	//Finds the largest server; counts through cores until largest is found then returns largest
