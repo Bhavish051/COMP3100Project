@@ -25,7 +25,9 @@ The system works by establishing a connection with the client and server through
 * Number of cores 
 * Cost 
 * Size of server (in MB)
+
 The client proceeds to store the server and its attributes in an ArrayList so that it can begin scheduling jobs. Jobs are scheduled through a while loop, which only stops if the client receives _"NONE"_ from the server. The main method used is _sendMessage(AlltoLargest(msg, t.get(largestServer)))_. This sends all the jobs to the known largest server. The client finds the first largest server (_findLargestServer_) and sends each job found to that server (_AlltoLargest_).
+
 The libaries used for the project are: 
 * java.net.* - Allows connections with the server
 * java.util.ArrayList - Creation of lists for the server
