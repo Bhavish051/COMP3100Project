@@ -21,10 +21,11 @@ This system is designed to
 
 # IMPLEMENTATION (PAGE 4)
 //TODO
-The way this system works is at the begining of the client and server it performs a 3 way handshake to ensure the connection is established and after that does the authentication of the user.
-Once all of this is done the client and server are ready to communicate with each other freely.
-After this the first thing this does is read the System.xml file to gather a list of servers available and all the related information about them like their number of cores, cost, how large it is. The client then stores all the servers with all of their attributes in an ArrayList of type server objects.
-Then the process of scheduling the jobs begins where after the client detects that the server has sent a job rather than a message or anything else it schedules it to the largest server and sends back the name of the server that is utilised.
+The system works by establishing a connection with the client and server through a 3-way handshake, ensuring a connection is made. It then asks for the authentication of the user; name of the user matches name of the user-system. Once this initial connection is made, the client and server can communicate with each other up until the connection is interrupted or timed out. The client then opens and reads the System.xml files using the libaries mentioned below to gather a list of servers as well as its related information such as
+* Number of cores 
+* Cost 
+* Size of server (in MB)
+The client proceeds to store the server and its attributes in an ArrayList so that it can begin scheduling jobs. Jobs are scheduled through a while loop, which only stops if the client receives _"NONE"_ from the server. The main method used is _sendMessage(AlltoLargest(msg, t.get(largestServer)))_. This sends all the jobs to the known largest server. The client finds the first largest server (_findLargestServer_) and sends each job found to that server (_AlltoLargest_).
 The libaries used for the project are: 
 * java.net.* - Allows connections with the server
 * java.util.ArrayList - Creation of lists for the server
