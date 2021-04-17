@@ -15,8 +15,15 @@ This system aims to at first perform a 3 way handshake to establish the connecti
 
 # DESIGN (PAGE 3)
 This system is designed in a very modular way with everthign distributed among appropriate methods and into a different class when required.
-To start with the system has two classes in a single package named "Assignment1.
-* Client.java: 
+To start with the system has two classes in a single package named "Assignment".
+* Client.java: This is the main driver class which runs the program with the following functions
+        Public Client: The public constructor which initialises the parameters of the client: Input stream as a Buffered Reader and an output stream as a Data Output stream.
+        Public start: This method drives the client so that when it first starts it does a 3 way handshake to establish the connection and keeps reading lines from the server until it sends a NONE message to end the program.
+        Public void main: The main method that initialises that client object and calls the start method.
+        Public sendMessage: This message takes a string as a parameter and sends it through to the server as an array of bytes
+        Public readMessage: This method reads data from the input stream as a character buffer then converts it to a string and returns that to output it.
+        Public void connect: This method establishes the connection to the server in a try clause where it first attempts to connect and if unsuccessfull waits a few seconds and then tries again. This creates a new Socket with the specified address and port while creating the client object and if the connection is successfull sends a "CONNECTED" message.
+        Public static readXML: This function takes a String as a parameter which is the name of the file the program reads data from about information about the servers. This function uses a DocumentFactoryBuilder to parse an XML file to read the list of servers and keeps adding them in an arrayList as it reads and returns the arrayList.
 
 * Server.java: This one contains the basic definition of a server with all its attributes 
         String type: A String for the type of server like large, small etc

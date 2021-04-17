@@ -1,4 +1,4 @@
-package Assignment1;
+package Assignment;
 
 import java.net.*;
 import java.util.ArrayList;
@@ -17,12 +17,14 @@ public class Client {
 	private BufferedReader in = null;
 	// constructor to put ip address and port
 	public Client(String address, int port) throws IOException {
+		
 		connect(address, port);
 		input = new BufferedReader(new InputStreamReader(System.in));
 		out = new DataOutputStream(socket.getOutputStream());
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 	private void start () {
+		
 		boolean connected = false;
 		String outStr = "";
 		

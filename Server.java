@@ -1,4 +1,4 @@
-package Assignment1;
+package Assignment;
 public class Server {
 
 		String type;
