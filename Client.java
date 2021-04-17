@@ -1,3 +1,5 @@
+package Assignment1;
+
 import java.net.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +24,7 @@ public class Client {
 	}
 	private void start () {
 		boolean connected = false;
+		String outStr = "";
 		
 		sendMessage("HELO");
 		readMessage();
@@ -60,11 +63,19 @@ public class Client {
 	}
 	
 		while (connected){
-			if (msg.contains("NONE")){
+			try {
+				outStr = input.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			if (outStr.equals("QUIT")){
 				connected = false;
 				sendMessage("QUIT");
 				break;
 			}
+
+			sendMessage(outStr);
 			readMessage();
 		}
 		try {

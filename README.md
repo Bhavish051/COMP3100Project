@@ -10,16 +10,26 @@ Satyamurthy Bale (45527652) <br>
 For this project, the main goal is to develop a client-sever simulator that schedules jobs for distributed systems. The aim for this stage is to create a client-side simulator with a simple job dispatcher, which sends all jobs to the largest server type. This stage, and for the entirety of the project, is referenced accordingly to the ds-sim simulation protocol.
 
 # SYSTEM OVERVIEW (PAGE 2)
-//TODO
 This system aims to at first perform a 3 way handshake to establish the connection followed by reading a system.xml file to get the details of all the servers and in the end reads the particular string received to evaluate on a one by one basis what needs to be done. It parses the first 4 characters of the string to see if it is a job that needs to be scheduled or just a message like QUIT received from the server.
 
 
 # DESIGN (PAGE 3)
-//TODO
-This system is designed to 
+This system is designed in a very modular way with everthign distributed among appropriate methods and into a different class when required.
+To start with the system has two classes in a single package named "Assignment1.
+* Client.java: 
+
+* Server.java: This one contains the basic definition of a server with all its attributes 
+        String type: A String for the type of server like large, small etc
+		String id: A String as an identifier for the server
+		int limit: An integer to represent the number of unique servers of a particular type
+		int bootTime: An integer to represent the time taken by a server to start
+		float hourlyRate: A floating point number for the price of usage of server 
+		int coreCount: An integer for the number of cores in a server
+		int memory: An integer for the RAM of the server
+		int disk: An integer to store the storage limit of the server.
 
 # IMPLEMENTATION (PAGE 4)
-//TODO
+
 The system works by establishing a connection with the client and server through a 3-way handshake, ensuring a connection is made. It then asks for the authentication of the user; name of the user matches name of the user-system. Once this initial connection is made, the client and server can communicate with each other up until the connection is interrupted or timed out. The client then opens and reads the System.xml files using the libaries mentioned below to gather a list of servers as well as its related information such as
 * Number of cores 
 * Cost 
