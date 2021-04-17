@@ -1,7 +1,6 @@
 # COMP3100Project
 
-# PROJECTTITLE (PAGE 1)
-Cloud Job Schedular or Cost-Efficient Resource Allocator for Distributed Systems (can do one of these 2 or one of your choice)
+# Cost-Efficient Resource Allocator for Distributed Systems (PAGE 1)
 
 # GROUPMEMBERS (PAGE 1)
 FIRST NAME, LAST NAME (STUDENT ID)
@@ -26,6 +25,13 @@ The way this system works is at the begining of the client and server it perform
 Once all of this is done the client and server are ready to communicate with each other freely.
 After this the first thing this does is read the System.xml file to gather a list of servers available and all the related information about them like their number of cores, cost, how large it is. The client then stores all the servers with all of their attributes in an ArrayList of type server objects.
 Then the process of scheduling the jobs begins where after the client detects that the server has sent a job rather than a message or anything else it schedules it to the largest server and sends back the name of the server that is utilised.
+The libaries used for the project are: 
+* java.net.* - Allows connections with the server
+* java.util.ArrayList - Creation of lists for the server
+* java.util.concurrent.TimeUnit - Used to time out connection if left inactive for a certain amount of time 
+* javax.xml.parsers.DocumentBuilder and javax.xml.parsers.DocumentBuilderFactory - Helps to open and read language files (XML files) 
+* org.w3c.dom.Document, org.w3c.dom.Element and org.w3c.dom.NodeList - Needed for file input
+* java.io.* - Allows for input and output (essential for communication between client and server)
 
 # REFERENCES (PAGE 5)
 //TODO
