@@ -3,7 +3,7 @@
 # Cost-Efficient Resource Allocator for Distributed Systems (PAGE 1)
 
 # GROUPMEMBERS (PAGE 1)
-Zoheb Eftali (45983569) <br>  
+Zoheb Eftali (45983569) <br>
 Bhavish Dhanda (45525005) <br>
 Satyamurthy Bale (45527652) <br>
 # INTRODUCTION (PAGE 2)
