@@ -1,4 +1,3 @@
-package Assignment;
 
 import java.net.*;
 import java.util.ArrayList;
@@ -190,7 +189,7 @@ public class Client {
 				Element server = (Element) servers.item(i);
 
 				String type = server.getAttribute("type");
-				int id = server.parseInt("id");
+				String id = server.getAttribute("id");
 				int limit = Integer.parseInt(server.getAttribute("limit"));
 				int bootupTime = Integer.parseInt(server.getAttribute("bootupTime"));
 				float hourlyRate = Float.parseFloat(server.getAttribute("hourlyRate"));
