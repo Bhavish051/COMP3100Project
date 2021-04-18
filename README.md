@@ -42,7 +42,7 @@ The system works by establishing a connection with the client and server through
 * Cost 
 * Size of server (in MB)
 
-The client proceeds to store the server and its attributes in an ArrayList so that it can begin scheduling jobs. Jobs are scheduled through a while loop, which only stops if the client receives _"NONE"_ from the server. The main method used is _sendMessage(AlltoLargest(msg, t.get(largestServer)))_. This sends all the jobs to the known largest server. The client finds the first largest server (_findLargestServer_) and sends each job found to that server (_AlltoLargest_).
+The client proceeds to store the server and its attributes in an ArrayList so that it can begin scheduling jobs. Jobs are scheduled through a while loop, which only stops if the client receives _"NONE"_ from the server. The main method used is _sendMessage(AllToLargest(msg, t.get(largestServer)))_. This sends all the jobs to the known largest server. The client finds the first largest server (_findLargestServer_) and sends each job found to that server (_AlltoLargest_).
 
 The libaries used for the project are: 
 * java.net.* - Allows connections with the server
@@ -52,5 +52,15 @@ The libaries used for the project are:
 * org.w3c.dom.Document, org.w3c.dom.Element and org.w3c.dom.NodeList - Needed for file input
 * java.io.* - Allows for input and output (essential for communication between client and server)
 
+The main data structure used in this project were linear; an array list and node mapping. An array is created to receive messages and split its from the server. Node mapping was used to read/write the information from the file and accessible by the server and used in the client. 
+Functions/Components of the simulator:
+* public Client(string address, int port) : Constructor for the client. IP address and port number are inputs 
+* public void start() : Main body of the program. This is used to initiate connection via 3-way handshake and schedule jobs to largest server with the use of the methods _findLargestServer_ and _AllToLargest_ 
+* public String AllToLargest(String job, Server s) : Sends all jobs to the largest server with the inputs String _job_ and Server _s_. Server _s_ is used to get the type of server whilst String _job_ is used to split the string.
+* public String findLargestServer(ArrayList<Server> s) : Finds the first largest server. Determined by the amount of cores in each server. Input _s_ is used to find the size of each server through the method _getCores()_ in the Server class. 
+* public void sendMessage(String outStr) and private String readMessage() : Methods used to send/receive messages from the server. Essential as these methods are used as the main form of communication between server and client and are used in the initial handhsake connection and retrieval of server information.
+* public void connect (String address, int port) : Method used for connection between client and server through the address and port number. Usage of socket. Contains condition for the connection to be stopped if timed out (uses of less resources).
+* public void main (String args[]) : Main part of the program. Used to initiate everything. Includes the reading/writing of the XML file and instantiating all server class related methods for use in the client class. 
+
 # REFERENCES (PAGE 5)
-//TODO
+GitHub - https://github.com/Bhavish051/COMP3100Project
