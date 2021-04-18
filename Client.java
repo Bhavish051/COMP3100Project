@@ -24,7 +24,7 @@ public class Client {
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 	private void start () {
-		
+
 		boolean connected = false;
 		String outStr = "";
 		
@@ -190,7 +190,7 @@ public class Client {
 				Element server = (Element) servers.item(i);
 
 				String type = server.getAttribute("type");
-				String id = server.getAttribute("id");
+				int id = server.getAttribute("id");
 				int limit = Integer.parseInt(server.getAttribute("limit"));
 				int bootupTime = Integer.parseInt(server.getAttribute("bootupTime"));
 				float hourlyRate = Float.parseFloat(server.getAttribute("hourlyRate"));

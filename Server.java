@@ -2,7 +2,7 @@ package Assignment;
 public class Server {
 
 		String type;
-		String id; 
+		int id; 
 		int limit; 
 		int bootTime;
 		float hourlyRate; 
@@ -10,7 +10,7 @@ public class Server {
 		int memory; 
 		int disk;
 
-		public Server(String type, String id, int limit, int bootTime, float hourlyRate, int coreCount, int memory, int disk){
+		public Server(String type, int id, int limit, int bootTime, float hourlyRate, int coreCount, int memory, int disk){
 			this.type = type;
 			this.limit = limit;
 			this.bootTime = bootTime;
@@ -22,7 +22,7 @@ public class Server {
 		}
 
 		// id: ID of server
-		public String getId() {
+		public int getId() {
 			return this.id;
 		}
 
