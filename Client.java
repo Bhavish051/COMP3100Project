@@ -190,7 +190,7 @@ public class Client {
 				Element server = (Element) servers.item(i);
 
 				String type = server.getAttribute("type");
-				int id = server.getAttribute("id");
+				int id = server.parseInt("id");
 				int limit = Integer.parseInt(server.getAttribute("limit"));
 				int bootupTime = Integer.parseInt(server.getAttribute("bootupTime"));
 				float hourlyRate = Float.parseFloat(server.getAttribute("hourlyRate"));
