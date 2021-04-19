@@ -62,5 +62,15 @@ Functions/Components of the simulator:
 * public void connect (String address, int port) : Method used for connection between client and server through the address and port number. Usage of socket. Contains condition for the connection to be stopped if timed out (uses of less resources).
 * public void main (String args[]) : Main part of the program. Used to initiate everything. Includes the reading/writing of the XML file and instantiating all server class related methods for use in the client class. 
 
+# DEMONSTRATION 
+* The machine on which the program is running should have a jdk installed if not run "sudo apt install default-jre"
+* The machine should allow connections over port "5000"
+* The machine should have the "ds-client" and "ds-server" files along with the appropriate configuration files 
+* To run the program 
+    > Open a Terminal and run ds-server with a configuration file by "./ds-server -c [config-file] -v all"
+    > On another terminal run the client by 
+        > First make sure the "Server.java" is compiled and then compile "Client.java"
+        > Run "java Client.java"
+
 # REFERENCES (PAGE 5)
 GitHub - https://github.com/Bhavish051/COMP3100Project
