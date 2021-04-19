@@ -7,10 +7,10 @@ Zoheb Eftali (45983569) <br>
 Bhavish Dhanda (45525005) <br>
 Satyamurthy Bale (45527652) <br>
 # INTRODUCTION (PAGE 2)
-For this project, the main goal is to develop a client-sever simulator that schedules jobs for distributed systems. The aim for this stage is to create a client-side simulator with a simple job dispatcher, which sends all jobs to the largest server type. This stage, and for the entirety of the project, is referenced accordingly to the ds-sim simulation protocol.
+For this project, the main goal is to develop a client-sever simulator that schedules jobs for distributed systems. The aim for this stage is to create a client-side simulator with a simple job dispatcher, which sends all jobs to the largest server type which is based on number of CPU cores. This stage, and for the entirety of the project, is referenced accordingly to the ds-sim simulation protocol. The simulator is desigened to work with different work and data sizes. 
 
 # SYSTEM OVERVIEW (PAGE 2)
-This system aims to at first perform a 3 way handshake to establish the connection followed by reading a system.xml file to get the details of all the servers available. Also intially it authenticates the user by retrieving his username as well to validate the details. This gives the client an overview of all the resources available. After this the client starts to read byte by byte from the server to evaluate the type of command sent. The commands from the server can be a job or a command to exit the program. 
+This system aims to at first perform a 3 way handshake to establish the connection followed by reading a system.xml file to get the details of all the servers available. Also intially it authenticates the user by retrieving his username as well to validate the details. This gives the client an overview of all the resources available. After this the client starts to read byte by byte from the server to evaluate the type of command sent. Only after the server sends a JOBN command to the client and receives the client's request does the scheduled tasks begin. The SCHD command will send jobs to the server and assign them to the appropriate variable sort. A few protocols will be implemented in the code to insure its protection, effectiveness, and performance. The username for our group's handshake will be AUTH, which will be a specific form of string character. To maintain the effectiveness of the handshake and procedure, commands such as 'NONE,' 'ERR,' 'REDY,'OK,' and 'QUIT' will be used. ERR is used to indicate that there is a protocol malfunction. NONE  indicates that there are no more work openings. The command REDY will be used to indicate that the next command simulation is complete. The command QUIT will be used to stop the stimulation.
 
 
 # DESIGN (PAGE 3)
@@ -62,6 +62,7 @@ Functions/Components of the simulator:
 * public void connect (String address, int port) : Method used for connection between client and server through the address and port number. Usage of socket. Contains condition for the connection to be stopped if timed out (uses of less resources).
 * public void main (String args[]) : Main part of the program. Used to initiate everything. Includes the reading/writing of the XML file and instantiating all server class related methods for use in the client class. 
 
+<<<<<<< HEAD
 # DEMONSTRATION 
 * The machine on which the program is running should have a jdk installed if not run "sudo apt install default-jre"
 * The machine should allow connections over port "5000"
@@ -71,6 +72,21 @@ Functions/Components of the simulator:
     > On another terminal run the client by 
         > First make sure the "Server.java" is compiled and then compile "Client.java"
         > Run "java Client.java"
+=======
+The entire workflow is focused on a few main basic principles that are built on top of one another in order to function effectively and efficiently. To insure protection, the socket and streams are set privately before being specified and created in the client process. The next approach is crucial to the software because it establishes the bond and acts as a handshake between the server and the client.
+
+There are two methods for sending and receiving messages that will be used in the application and are crucial to the code's functionality. The sendMSG method gets message bytes from a string, converts them to characters, and then writes and flushes the output stream.
+
+The run method is essential for running the ds-sim protocols and commands, as well as ensuring that all steps are completed and the mechanism functions properly. The HELO command will always come first, followed by AUTH and  group number authentication. After that, the device will say it is ready, and it will use'readXMLFile' to read the selected input XML file.
+
+If nothing happens, the process will return a NONE and exit. The following section will deal with methods for scheduling and sorting jobs that are found deep within the code. OK is used to insure that everything is running smoothly and correctly, and it is returned after the previous instruction. To assist in this action, it will name 'allToLargest' and largestServer.It would always be possible to send messages after this has happened for all jobs and before QUIT has been received. A QUIT protocol is invoked to complete the handshake, and the output stream and socket are locked.
+
+ReadXMLFiles, an array list of servers for reading files, is another important process. This is crucial for reading all of the input XML files, and it makes use of nodes, arraylists, and loops to insure that the process runs smoothly. The structure is built using paper builders and factories. The nodelist will call the server's elements, and a loop will iterate over the server's elements.
+
+All of the elements are called and placed into a variable called serverList, which is then returned. This is critical for reading pre-compiled and input files when they are accessed.
+
+The key method is the main, and it will call the client and server's addresses and ports. 
+>>>>>>> c4596c9e9cbc505c87e21695df151f293815ac48
 
 # REFERENCES (PAGE 5)
 GitHub - https://github.com/Bhavish051/COMP3100Project
