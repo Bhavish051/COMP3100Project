@@ -61,18 +61,6 @@ Functions/Components of the simulator:
 * public void sendMessage(String outStr) and private String readMessage() : Methods used to send/receive messages from the server. Essential as these methods are used as the main form of communication between server and client and are used in the initial handhsake connection and retrieval of server information.
 * public void connect (String address, int port) : Method used for connection between client and server through the address and port number. Usage of socket. Contains condition for the connection to be stopped if timed out (uses of less resources).
 * public void main (String args[]) : Main part of the program. Used to initiate everything. Includes the reading/writing of the XML file and instantiating all server class related methods for use in the client class. 
-
-<<<<<<< HEAD
-# DEMONSTRATION 
-* The machine on which the program is running should have a jdk installed if not run "sudo apt install default-jre"
-* The machine should allow connections over port "5000"
-* The machine should have the "ds-client" and "ds-server" files along with the appropriate configuration files 
-* To run the program 
-    > Open a Terminal and run ds-server with a configuration file by "./ds-server -c [config-file] -v all"
-    > On another terminal run the client by 
-        > First make sure the "Server.java" is compiled and then compile "Client.java"
-        > Run "java Client.java"
-=======
 The entire workflow is focused on a few main basic principles that are built on top of one another in order to function effectively and efficiently. To insure protection, the socket and streams are set privately before being specified and created in the client process. The next approach is crucial to the software because it establishes the bond and acts as a handshake between the server and the client.
 
 There are two methods for sending and receiving messages that will be used in the application and are crucial to the code's functionality. The sendMSG method gets message bytes from a string, converts them to characters, and then writes and flushes the output stream.
@@ -86,7 +74,17 @@ ReadXMLFiles, an array list of servers for reading files, is another important p
 All of the elements are called and placed into a variable called serverList, which is then returned. This is critical for reading pre-compiled and input files when they are accessed.
 
 The key method is the main, and it will call the client and server's addresses and ports. 
->>>>>>> c4596c9e9cbc505c87e21695df151f293815ac48
+
+# DEMONSTRATION 
+* The machine on which the program is running should have a jdk installed if not run "sudo apt install default-jre"
+* The machine should allow connections over port "5000"
+* The machine should have the "ds-client" and "ds-server" files along with the appropriate configuration files 
+* To run the program 
+    > Open a Terminal and run ds-server with a configuration file by "./ds-server -c [config-file] -v all"
+    > On another terminal run the client by 
+        > First make sure the "Server.java" is compiled and then compile "Client.java"
+        > Run "java Client.java"
+
 
 # REFERENCES (PAGE 5)
 GitHub - https://github.com/Bhavish051/COMP3100Project
