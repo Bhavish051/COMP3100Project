@@ -25,7 +25,6 @@ public class Client {
 	private void start () {
 
 		boolean connected = false;
-		String outStr = "";
 		
 		sendMessage("HELO\n");
 		readMessage();
@@ -64,19 +63,12 @@ public class Client {
 	}
 	
 		while (connected){
-			try {
-				outStr = input.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			if (outStr.equals("QUIT")){
+			if (msg.contains("NONE")){
 				connected = false;
 				sendMessage("QUIT\n");
 				break;
 			}
 
-			sendMessage(outStr);
 			readMessage();
 		}
 		try {
