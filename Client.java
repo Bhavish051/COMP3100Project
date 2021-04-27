@@ -29,7 +29,7 @@ public class Client {
 		sendMessage("HELO\n");
 		readMessage();
 
-		sendMessage("AUTH zoheb\n");
+		sendMessage("AUTH bhavish\n");
 		readMessage();
 		//Reads ds-system and populates it into array Server 't'
 		ArrayList<Server> t = new ArrayList<Server>();
