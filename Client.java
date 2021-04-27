@@ -96,7 +96,9 @@ public class Client {
 	private String AllToLargest(String job, Server s){
 		int jobID = 0;
 		String[] strSplit = job.split("\\s+");
-		return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID + "\n";
+		if(strSplit.length > 2)
+			return "SCHD " + strSplit[2] + " " + s.getType() + " " + jobID + "\n";
+		return "SCHD " + strSplit + " " + s.getType() + " " + jobID + "\n";
 	}
 
 	//Finds the largest server; counts through cores until largest is found then returns largest
