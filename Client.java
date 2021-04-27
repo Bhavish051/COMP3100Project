@@ -57,14 +57,16 @@ public class Client {
 			// 	msg = readMessage();
 			// }
 			if (msg.contains("JOBN")){
-				sendMessage("REDY\n");
-				msg = readMessage();
-				sendMessage("GETS Capable\n");
+				// sendMessage("REDY\n");
+				// msg = readMessage();
+				sendMessage("GETS Capable" + t.get(largestServer).getCores() + t.get(largestServer).getMemory() + t.get(largestServer).getDisk());
 				msg = readMessage();
 			} else {
 				sendMessage(AllToLargest(msg, t.get(largestServer)));
 				msg = readMessage();
-				sendMessage("REDY\n");
+				sendMessage("GETS Capable" + t.get(largestServer).getCores() + t.get(largestServer).getMemory()
+						+ t.get(largestServer).getDisk());
+
 				msg = readMessage();
 			}
 	}
