@@ -59,13 +59,12 @@ public class Client {
 			if (msg.contains("JOBN")){
 				// sendMessage("REDY\n");
 				// msg = readMessage();
-				sendMessage("GETS Capable" + t.get(largestServer).getCores() + t.get(largestServer).getMemory() + t.get(largestServer).getDisk());
-				msg = readMessage();
+				sendMessage("GETS Capable" + " " +t.get(largestServer).getCores() + " " + t.get(largestServer).getMemory() + " " + t.get(largestServer).getDisk() + "\n" ) ;
+				msg = readGetsCapable();
 			} else {
 				sendMessage(AllToLargest(msg, t.get(largestServer)));
 				msg = readMessage();
-				sendMessage("GETS Capable" + t.get(largestServer).getCores() + t.get(largestServer).getMemory()
-						+ t.get(largestServer).getDisk());
+				sendMessage("REDY");
 
 				msg = readMessage();
 			}
@@ -93,6 +92,7 @@ public class Client {
 		System.exit(1);
 	}
 	
+
 
 	//Sends all jobs to largest server 
 	private String AllToLargest(String job, Server s){
@@ -144,6 +144,23 @@ public class Client {
 		System.out.println("INC: " + inStr);
 
 		return inStr;
+	}
+
+	private String readGetsCapable() {
+		String S = "";
+		char[] cbuf = new char[65535];
+		try {
+			in.read(cbuf);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		S = new String(cbuf, 0, cbuf.length);
+		String[] Data = new String[4];
+		Data = S.split(" ");
+		// Display input from server
+		System.out.println("INC: " + Data);
+
+		return S;
 	}
 	
 	//Establishes connection to initiate handhsake
