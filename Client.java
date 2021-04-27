@@ -51,11 +51,11 @@ public class Client {
 		
 		//Job scheduler to largest server 
 		while(!msg.contains("NONE")){
-			if(msg.contains("JOBN"))
-			{
-				sendMessage("GETS Capable");
-				msg = readMessage();
-			}
+			// if(msg.contains("JOBN"))
+			// {
+			// 	sendMessage("GETS Capable");
+			// 	msg = readMessage();
+			// }
 			if (msg.contains("JCPL")){
 				sendMessage("REDY\n");
 				msg = readMessage();
