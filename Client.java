@@ -57,6 +57,8 @@ public class Client {
 			// 	msg = readMessage();
 			// }
 			if (msg.contains("JOBN")){
+				sendMessage("REDY\n");
+				msg = readMessage();
 				sendMessage("GETS Capable\n");
 				msg = readMessage();
 			} else {
