@@ -56,8 +56,8 @@ public class Client {
 			// 	sendMessage("GETS Capable");
 			// 	msg = readMessage();
 			// }
-			if (msg.contains("JCPL")){
-				sendMessage("REDY\n");
+			if (msg.contains("JOBN")){
+				sendMessage("GETS Capable\n");
 				msg = readMessage();
 			} else {
 				sendMessage(AllToLargest(msg, t.get(largestServer)));
